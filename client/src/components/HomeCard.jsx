@@ -5,12 +5,12 @@ export default function HomeCard() {
   return (
     <div className='homeCard'>
       <div className='rightPart'>
-        {/* <img src={logo} alt="logo" /> */}
+        <img src={logo} alt="logo" />
       </div>
       <div className='leftPart'>
-        <div>
+        <div className='topLeft'>
           <h1>مفقوداتي</h1>
-          <h3>ضيعت إشي أو لقيت إشي ضايع ؟</h3>
+          <h3>ضيعت إشي أو لقيت إشي ضايع؟</h3>
         </div>
         <p>المنصة الأولى من نوعها, <strong>مجاناً</strong>!</p>
       </div>

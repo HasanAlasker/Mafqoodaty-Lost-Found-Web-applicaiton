@@ -8,8 +8,8 @@
   --background: #ebebeb;
   --white: #ffffff;
   --black: #000000;
-  --gray: #8f8f8f;
   --green: #0bd064;
+  --gray: #8f8f8f;
 }
 html {
   scroll-behavior: smooth;
@@ -31,10 +31,21 @@ a {
   width: 90%;
   margin: 0 auto;
 }
+h1 {
+  font-size: clamp(2.1rem, 5vw, 8rem);
+}
+h3 {
+  font-size: clamp(1.2rem, 2.8vw, 2.2rem);
+}
+p{
+  font-size: clamp(1rem, 2vw, 2rem);
+
+}
 
 /* -------------------------------------- N A V B A R ----------------------------------------- */
 
 nav {
+  z-index: 1000;
   position: sticky;
   top: 0;
   right: 0;
@@ -43,7 +54,7 @@ nav {
   flex-direction: row;
   justify-content: center;
   padding-bottom: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   background-color: rgba(237, 237, 237, 0.7);
   backdrop-filter: blur(15px) saturate(180%);
   -webkit-backdrop-filter: blur(15px) saturate(180%);
@@ -57,8 +68,9 @@ nav {
   width: 100%;
 }
 .links {
-  gap: 3rem;
-  display: none;
+  gap: 1rem;
+  display: flex;
+  /* display: none; */
 }
 .logo {
   background: var(--green);
@@ -98,7 +110,57 @@ nav {
 
 /* -------------------------------------- M E D I A   Q U E R E I S ----------------------------------------- */
 
-@media (min-width: 560px) {
+.homeCard {
+  width: 100%;
+  background: var(--green);
+  color: var(--white);
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  position: relative;
+  padding: 1.5rem 1rem;
+}
+.rightPart {
+  display: none;
+}
+.rightPart > img {
+  width: 25vw;
+  max-width: 22rem;
+}
+.topLeft{
+  padding-left: 1rem;
+  margin-bottom: 1vh;
+}
+.leftPart{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* -------------------------------------- M E D I A   Q U E R E I S ----------------------------------------- */
+
+@media (min-width: 460px) {
+  .homeCard{
+    padding: 0;
+  }
+  .rightPart {
+    background: var(--white);
+    width: 45%;
+    max-width: 30rem;
+    aspect-ratio: 1;
+    /* scale: 1.2; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    position: relative;
+    left: 1.5rem;
+  }
+  .topLeft{
+    margin-bottom: 5vh;
+  }
 }
 @media (min-width: 650px) {
   .menu {
@@ -106,6 +168,7 @@ nav {
   }
   .links {
     display: flex;
+    gap: 3rem;
   }
   .logo {
     width: 2.5rem;
