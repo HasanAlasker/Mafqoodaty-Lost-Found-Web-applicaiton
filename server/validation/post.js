@@ -30,6 +30,8 @@ export const createPostSchema = Joi.object({
     "string.max": "Password cannot exceed 50 characters",
   }),
 
+  // image: Joi.string().required(),
+
   description: Joi.string().max(500).trim().required().messages({
     "string.empty": "Description is required",
     "string.max": "Description cannot exceed 500 characters",
