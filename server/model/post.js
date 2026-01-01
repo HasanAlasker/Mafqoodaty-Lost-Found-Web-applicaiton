@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import bcrypt from 'bcrypt'
+import bcrypt from "bcrypt";
 
 const postSchema = new mongoose.Schema(
   {
@@ -87,13 +87,13 @@ const postSchema = new mongoose.Schema(
 postSchema.index({ type: 1, city: 1, status: 1, createdAt: -1 });
 
 postSchema.methods.hashPassword = async function (password) {
-  const salt = await bcrypt.genSalt(10)
-  return await bcrypt.hash(password, salt)
+  const salt = await bcrypt.genSalt(10);
+  return await bcrypt.hash(password, salt);
 };
 
 postSchema.methods.comparePassword = async function (password) {
-  return await bcrypt.compare(password, this.password)
-}
+  return await bcrypt.compare(password, this.password);
+};
 
 const PostModel = mongoose.model("Post", postSchema);
 export default PostModel;

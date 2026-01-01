@@ -13,7 +13,6 @@ import {
 const router = express.Router();
 
 // get posts with optional filter
-
 router.get("/", async (req, res) => {
   try {
     const { type, city, area, status, category } = req.query;
@@ -41,42 +40,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// get post by id
-
-router.get("/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid post ID",
-      });
-    }
-
-    const post = await PostModel.findById(id);
-    if (!post) {
-      return res.status(404).json({
-        success: false,
-        message: "Post not found",
-      });
-    }
-
-    return res.status(200).json({
-      success: true,
-      data: post,
-    });
-  } catch (err) {
-    console.log(err);
-    return res.status(500).json({
-      success: false,
-      message: "Server Error",
-    });
-  }
-});
-
 // search for post
-
 router.get("/search", async (req, res) => {
   try {
     const { q, type, city, area, category, status = "active" } = req.query;
@@ -120,8 +84,76 @@ router.get("/search", async (req, res) => {
   }
 });
 
-// verify password
+// get lost
+router.get("/lost", async (req, res) => {
+  try {
+    const posts = await PostModel.find({ type: "lost" }).sort("-createdAt");
 
+    return res.status(200).json({
+      success: true,
+      data: posts,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+});
+
+// get found
+router.get("/found", async (req, res) => {
+  try {
+    const posts = await PostModel.find({ type: "found" }).sort("-createdAt");
+
+    return res.status(200).json({
+      success: true,
+      data: posts,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+});
+
+// get post by id
+router.get("/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid post ID",
+      });
+    }
+
+    const post = await PostModel.findById(id);
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        message: "Post not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: post,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+});
+
+// verify password
 router.post("/verify/:id", validate(verifyPasswordSchema), async (req, res) => {
   try {
     const { password } = req.body;
@@ -164,7 +196,6 @@ router.post("/verify/:id", validate(verifyPasswordSchema), async (req, res) => {
 });
 
 // create post
-
 router.post("/", validate(createPostSchema), async (req, res) => {
   try {
     const data = req.body;
@@ -191,7 +222,6 @@ router.post("/", validate(createPostSchema), async (req, res) => {
 });
 
 // edit post
-
 router.put("/:id", validate(updatePostSchema), async (req, res) => {
   try {
     const { id } = req.params;
@@ -247,7 +277,6 @@ router.put("/:id", validate(updatePostSchema), async (req, res) => {
 });
 
 // delete post
-
 router.delete("/:id", validate(verifyPasswordSchema), async (req, res) => {
   try {
     const { id } = req.params;

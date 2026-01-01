@@ -10,14 +10,14 @@ function Nav({ onMenuOpen }) {
     <nav>
       <div className="nav-cont">
         <div className="links">
-          <a href="/home" className={active === "/home" ? "active" : ""}>
+          <a href="/" className={active === "/" ? "active" : ""}>
             الرئيسة
           </a>
           <a href="/addPost" className={active === "/addPost" ? "active" : ""}>
             إضافة منشور
           </a>
         </div>
-        <a href="/" className="logo">
+        <a href="/landing" className="logo">
           <img src={logo} alt="logo"></img>
         </a>
         {/* <span className="material-symbols-outlined menu" onClick={onMenuOpen}>
