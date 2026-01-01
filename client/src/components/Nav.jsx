@@ -4,7 +4,6 @@ import { Route, useLocation } from "react-router-dom";
 function Nav({ onMenuOpen }) {
   const location = useLocation()
   const active = location.pathname;
-  console.log("path: ",active);
 
   return (
     <nav>

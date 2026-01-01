@@ -56,6 +56,7 @@ export const createPostSchema = Joi.object({
       "jewelry",
       "other"
     )
+    .required()
     .messages({
       "any.only": "Please select a valid category",
     }),

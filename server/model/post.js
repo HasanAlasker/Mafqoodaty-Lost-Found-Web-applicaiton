@@ -39,6 +39,7 @@ const postSchema = new mongoose.Schema(
         "jewelry",
         "other",
       ],
+      required: true,
     },
     name: {
       type: String,

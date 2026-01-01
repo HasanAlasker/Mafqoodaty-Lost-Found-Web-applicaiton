@@ -9,11 +9,11 @@ export default function TopOfPost({ userName, createdAt }) {
           <RiUserLine className="avatarIcon" color="white" size={32}/>
         </div>
         <div className="nameDate">
-          <p className="mid bold">userName</p>
-          <p className="small faded semiBold">date</p>
+          <p className="mid bold">حسن الاسكر</p>
+          <p className="small faded semiBold">1/2/2026</p>
         </div>
       </div>
-      <RiMore2Line size={32} onClick={''}/>
+      <RiMore2Line size={32} />
     </div>
   );
 }

@@ -37,7 +37,7 @@ export default function Post({
         <Tags title={type} />
       </TagContainer>
       <Description open={openDesc} onClick={onClickDesc}/>
-      <img className="itemImage" src="" alt="" />
+      <img className="itemImage"  alt="" />
       <PrimaryBtn />
     </PostCard>
   );

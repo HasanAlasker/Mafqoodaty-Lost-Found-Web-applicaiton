@@ -16,15 +16,14 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(helmet());
 // app.use(cookieParser);
-// app.use(
-//   cors({
-//     origin:
-//       process.env.NODE_ENV === "production"
-//         ? "render link" // add the server link here when you publish it
-//         : "http://localhost:5173",
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "render link" // add the server link here when you publish it
+        : "http://localhost:5173",
+  })
+);
 
 app.use(globalLimit);
 
