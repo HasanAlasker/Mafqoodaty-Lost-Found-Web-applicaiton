@@ -3,7 +3,7 @@ import Nav from "../components/Nav";
 import Screen from "../components/Screen";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { createPost } from "../api/posts"; // Import your API function
+import { usePost } from "../context/postContext";
 
 const validationSchema = Yup.object({
   userName: Yup.string()
@@ -74,29 +74,29 @@ const initialValues = {
   area: "",
 };
 
-const handleSubmit = async (
-  values,
-  { setSubmitting, resetForm, setErrors }
-) => {
-  try {
-    const result = await createPost(values);
-
-    if (result.ok) {
-      console.log("Post created successfully:", result.data);
-      resetForm();
-      // Navigate to success page or show success message
-      alert("تم النشر بنجاح!")
-    } else {
-      setErrors({ submit: result.error });
-    }
-  } catch (error) {
-    setErrors({ submit: "An unexpected error occurred" });
-  } finally {
-    setSubmitting(false);
-  }
-};
-
 export default function AddPost() {
+  const { addPost, errMsg, status, error, loading } = usePost();
+
+  const handleSubmit = async (
+    values,
+    { setSubmitting, resetForm, setErrors }
+  ) => {
+    try {
+      const result = await addPost(values);
+
+      if (result) {
+        resetForm();
+        alert("تم النشر بنجاح!");
+      } else {
+        setErrors({ submit: errMsg });
+      }
+    } catch (error) {
+      setErrors({ submit: "An unexpected error occurred" });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <Screen>
       <Nav />
@@ -107,7 +107,6 @@ export default function AddPost() {
       >
         {({ isSubmitting, errors }) => (
           <Form>
-            {/* Add your form fields here */}
             <div className="formInput">
               <label htmlFor="userName">اسم المستخدم</label>
               <Field
@@ -223,6 +222,7 @@ export default function AddPost() {
               type="submit"
               disabled={isSubmitting}
             >
+              {/* {loading && "جاري التحميل..."} */}
               {isSubmitting ? "ينشر الآن..." : "نشر الإعلان"}
             </button>
           </Form>
