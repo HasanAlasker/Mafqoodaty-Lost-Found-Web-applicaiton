@@ -1,7 +1,19 @@
-import React from 'react'
+import React from "react";
+import { RiMore2Line, RiUserLine } from "@remixicon/react";
 
-export default function TopOfPost() {
+export default function TopOfPost({ userName, createdAt }) {
   return (
-    <div>TopOfPost</div>
-  )
+    <div className="topOfPost padding" style={{paddingLeft:".5rem"}}>
+      <div className="picAndCont">
+        <div className="avatar">
+          <RiUserLine className="avatarIcon" color="white" size={32}/>
+        </div>
+        <div className="nameDate">
+          <p className="mid bold">userName</p>
+          <p className="small faded semiBold">date</p>
+        </div>
+      </div>
+      <RiMore2Line size={32} onClick={''}/>
+    </div>
+  );
 }

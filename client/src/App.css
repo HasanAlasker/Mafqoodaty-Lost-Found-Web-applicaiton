@@ -43,6 +43,21 @@ h3 {
 p {
   font-size: clamp(1rem, 2vw, 2rem);
 }
+.mid {
+  font-size: clamp(1rem, 5vw, 1.3rem);
+}
+.small {
+  font-size: clamp(0.8rem, 3.5vw, 1.2rem);
+}
+.bold {
+  font-weight: bold;
+}
+.semiBold {
+  font-weight: 600;
+}
+.faded {
+  color: var(--gray);
+}
 
 /* -------------------------------------- N A V B A R ----------------------------------------- */
 
@@ -168,6 +183,87 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/* -------------------------------------- P O S T ----------------------------------------- */
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+}
+.postCard {
+  background: var(--white);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  overflow: hidden;
+}
+.padding {
+  padding: 0 1rem;
+}
+.picAndCont {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nameDate {
+  line-height: 1.3;
+}
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--green);
+  width: 15vw;
+  aspect-ratio: 1;
+  max-width: 3rem;
+  min-width: 2.2rem;
+  border-radius: 50%;
+}
+.topOfPost {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tagCont {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.tag {
+  border: var(--black) solid 2px;
+  padding: 0 0.5rem;
+  border-radius: 20rem;
+  line-height: 1.5;
+  font-weight: bold;
+}
+.itemImage {
+  width: 100%;
+  aspect-ratio: 1;
+  border: none;
+  background: var(--gray);
+}
+.priBtn {
+  width: 100%;
+  border: none;
+  background: var(--green);
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.priBtn:hover {
+  filter: drop-shadow(0px 10px 10px rgba(124, 123, 123, 0.581));
+  cursor: pointer;
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
 }
 
 /* -------------------------------------- M E D I A   Q U E R E I S ----------------------------------------- */
