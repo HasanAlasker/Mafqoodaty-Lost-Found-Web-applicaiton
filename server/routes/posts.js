@@ -13,6 +13,14 @@ import deleteImageFromCloudinary from "../utils/cloudinary.js";
 
 const router = express.Router();
 
+router.get("/wakeup", async (req, res) => {
+  try {
+    res.status(200).send("awake");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 // get posts with optional filter
 router.get("/", async (req, res) => {
   try {

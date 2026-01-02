@@ -269,7 +269,7 @@ nav {
 
 /* -------------------------------------- F O R M ----------------------------------------- */
 
-form{
+form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -320,15 +320,21 @@ form{
   border: var(--green) solid 2px;
   accent-color: var(--green);
 }
-.formBtn{
+.formBtn {
   width: 100%;
   border: none;
   border-radius: 8px;
   margin: 1rem 0 4rem 0;
   background: var(--green);
   color: var(--white);
-  padding: .5rem;
+  padding: 0.5rem;
   font-weight: bold;
+}
+.formBtn:hover {
+  filter: drop-shadow(0px 10px 10px rgba(124, 123, 123, 0.581));
+  cursor: pointer;
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
 }
 
 /* -------------------------------------- M E D I A   Q U E R E I S ----------------------------------------- */
@@ -353,6 +359,16 @@ form{
   }
   .topLeft {
     margin-bottom: 5vh;
+  }
+  .topForm {
+    display: flex;
+    gap: 1rem;
+  }
+  .rightForm {
+    width: 50%;
+  }
+  .leftForm {
+    width: 50%;
   }
 }
 @media (min-width: 650px) {
@@ -379,6 +395,9 @@ form{
   .nav-cont {
     padding-top: 2rem;
   }
+  .topForm {
+    gap: 2rem;
+  }
 }
 @media (min-width: 850px) {
 }
@@ -390,7 +409,7 @@ form{
     padding-top: 2rem;
   }
 }
-@media (min-width: 770px) {
+@media (min-width: 710px) {
 }
 @media (min-width: 1150px) {
   .screen {

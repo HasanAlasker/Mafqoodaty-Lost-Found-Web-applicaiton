@@ -107,74 +107,118 @@ export default function AddPost() {
       >
         {({ isSubmitting, errors }) => (
           <Form>
-            <div className="formInput">
-              <label htmlFor="userName">اسم المستخدم</label>
-              <Field
-                type="text"
-                name="userName"
-                id="userName"
-                placeholder="اسم المستخدم"
-              />
-              <ErrorMessage name="userName" component="div" className="error" />
-            </div>
+            <div className="topForm">
+              <div className="rightForm">
+                <div className="formInput">
+                  <label htmlFor="userName">اسم المستخدم</label>
+                  <Field
+                    type="text"
+                    name="userName"
+                    id="userName"
+                    placeholder="اسم المستخدم"
+                  />
+                  <ErrorMessage
+                    name="userName"
+                    component="div"
+                    className="error"
+                  />
+                </div>
 
-            <div className="formInput">
-              <label htmlFor="userPhone">رقم الهاتف</label>
-              <Field
-                type="tel"
-                name="userPhone"
-                id="userPhone"
-                placeholder="رقم الهاتف"
-                style={{ direction: "rtl" }}
-              />
-              <ErrorMessage
-                name="userPhone"
-                component="div"
-                className="error"
-              />
-            </div>
+                <div className="formInput">
+                  <label htmlFor="userPhone">رقم الهاتف</label>
+                  <Field
+                    type="tel"
+                    name="userPhone"
+                    id="userPhone"
+                    placeholder="رقم الهاتف"
+                    style={{ direction: "rtl" }}
+                  />
+                  <ErrorMessage
+                    name="userPhone"
+                    component="div"
+                    className="error"
+                  />
+                </div>
 
-            <div className="formInput">
-              <label htmlFor="type">النوع</label>
-              <Field as="select" name="type" id="type">
-                <option value="">اختر النوع</option>
-                <option value="found">موجود</option>
-                <option value="lost">مفقود</option>
-              </Field>
-              <ErrorMessage name="type" component="div" className="error" />
-            </div>
+                <div className="formInput">
+                  <label htmlFor="type">النوع</label>
+                  <Field as="select" name="type" id="type">
+                    <option value="">اختر النوع</option>
+                    <option value="found">موجود</option>
+                    <option value="lost">مفقود</option>
+                  </Field>
+                  <ErrorMessage name="type" component="div" className="error" />
+                </div>
 
-            <div className="formInput">
-              <label htmlFor="category">الفئة</label>
-              <Field as="select" name="category" id="category">
-                <option value="">اختر الفئة</option>
-                <option value="phone">هاتف</option>
-                <option value="keys">مفاتيح</option>
-                <option value="wallet">محفظة</option>
-                <option value="bag">حقيبة</option>
-                <option value="pet">حيوان أليف</option>
-                <option value="documents">وثائق</option>
-                <option value="jewelry">مجوهرات</option>
-                <option value="other">أخرى</option>
-              </Field>
-              <ErrorMessage name="category" component="div" className="error" />
-            </div>
+                <div className="formInput">
+                  <label htmlFor="category">الفئة</label>
+                  <Field as="select" name="category" id="category">
+                    <option value="">اختر الفئة</option>
+                    <option value="phone">هاتف</option>
+                    <option value="keys">مفاتيح</option>
+                    <option value="wallet">محفظة</option>
+                    <option value="bag">حقيبة</option>
+                    <option value="pet">حيوان أليف</option>
+                    <option value="documents">وثائق</option>
+                    <option value="jewelry">مجوهرات</option>
+                    <option value="other">أخرى</option>
+                  </Field>
+                  <ErrorMessage
+                    name="category"
+                    component="div"
+                    className="error"
+                  />
+                </div>
+              </div>
+              <div className="leftForm">
+                <div className="formInput">
+                  <label htmlFor="name">اسم الشيء</label>
+                  <Field
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="اسم الشيء"
+                  />
+                  <ErrorMessage name="name" component="div" className="error" />
+                </div>
 
-            <div className="formInput">
-              <label htmlFor="name">اسم الشيء</label>
-              <Field
-                type="text"
-                name="name"
-                id="name"
-                placeholder="اسم الشيء"
-              />
-              <ErrorMessage name="name" component="div" className="error" />
-            </div>
+                <div className="formInput">
+                  <label htmlFor="color">اللون (اختياري)</label>
+                  <Field
+                    type="text"
+                    name="color"
+                    id="color"
+                    placeholder="اللون"
+                  />
+                  <ErrorMessage
+                    name="color"
+                    component="div"
+                    className="error"
+                  />
+                </div>
 
-            <div className="formInput">
-              <label htmlFor="color">اللون (اختياري)</label>
-              <Field type="text" name="color" id="color" placeholder="اللون" />
-              <ErrorMessage name="color" component="div" className="error" />
+                <div className="formInput">
+                  <label htmlFor="city">المدينة</label>
+                  <Field
+                    type="text"
+                    name="city"
+                    id="city"
+                    placeholder="المدينة"
+                  />
+                  <ErrorMessage name="city" component="div" className="error" />
+                </div>
+
+                <div className="formInput">
+                  <label htmlFor="area">المنطقة</label>
+                  <Field
+                    type="text"
+                    name="area"
+                    id="area"
+                    placeholder="المنطقة"
+                  />
+                  <ErrorMessage name="area" component="div" className="error" />
+                </div>
+              </div>
             </div>
 
             <div className="formInput">
@@ -190,18 +234,6 @@ export default function AddPost() {
                 component="div"
                 className="error"
               />
-            </div>
-
-            <div className="formInput">
-              <label htmlFor="city">المدينة</label>
-              <Field type="text" name="city" id="city" placeholder="المدينة" />
-              <ErrorMessage name="city" component="div" className="error" />
-            </div>
-
-            <div className="formInput">
-              <label htmlFor="area">المنطقة</label>
-              <Field type="text" name="area" id="area" placeholder="المنطقة" />
-              <ErrorMessage name="area" component="div" className="error" />
             </div>
 
             <div className="formInput">
