@@ -138,17 +138,18 @@ export function PostProvider({ children }) {
 
     try {
       const result = await editPost(id, data);
+      console.log(result);
 
       if (!result.ok) {
         setError(true);
         setErrMsg(result.error);
         setStatus(result.status);
-        return false;
+        return { ok: false, error: result.error };
       }
 
-      const editedPost = result.data;
+      const editedPost = result.data.data;
 
-      if (data.type === "lost") {
+      if (data.type === "مفقود") {
         setLost((prev) =>
           prev.map((post) => (post._id === id ? editedPost : post))
         );
@@ -159,7 +160,7 @@ export function PostProvider({ children }) {
       }
 
       setStatus(result.status);
-      return true;
+      return { ok: true };
     } catch (err) {
       setError(true);
       setErrMsg(err.message || err);

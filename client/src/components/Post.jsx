@@ -6,42 +6,8 @@ import PrimaryBtn from "./PrimaryBtn";
 import PostCard from "./PostCard";
 import TagContainer from "./TagContainer";
 import PostMenu from "./PostMenu";
-import * as Yup from "yup";
-import { ErrorMessage, Field, Form, Formik } from "formik";
 import PasswordCard from "./PasswordCard";
-
-const validationSchema = Yup.object({
-  userPhone: Yup.string()
-    .required("رقم الهاتف مطلوب")
-    .matches(/^[0-9+\-\s()]+$/, "صيغة رقم الهاتف غير صحيحة")
-    .trim(),
-
-  name: Yup.string()
-    .max(100, "اسم الشيء يجب ألا يزيد عن 100 حرف")
-    .required("اسم الشيء مطلوب")
-    .trim(),
-
-  type: Yup.string()
-    .oneOf(["موجود", "مفقود"], "النوع يجب أن يكون إما مفقود أو موجود")
-    .required("النوع مطلوب"),
-
-  color: Yup.string().trim().notRequired(),
-
-  password: Yup.string()
-    .min(4, "كلمة السر غير صحيحة")
-    .required("كلمة المرور مطلوبة"),
-
-  image: Yup.mixed().notRequired(),
-
-  description: Yup.string()
-    .max(500, "الوصف يجب ألا يزيد عن 500 حرف")
-    .required("الوصف مطلوب")
-    .trim(),
-
-  city: Yup.string().required("المدينة مطلوبة").trim(),
-
-  area: Yup.string().required("المنطقة مطلوبة").trim(),
-});
+import EditCard from "./EditCard";
 
 export default function Post({
   id,
@@ -68,12 +34,11 @@ export default function Post({
   const initialValues = {
     userPhone: userPhone,
     name: name,
-    type: type,
-    category: category,
-    color: color || null,
+    color: color || "",
     description: description,
     city: city,
     area: area,
+    type: type,
   };
 
   const onClickDesc = () => {
@@ -85,7 +50,7 @@ export default function Post({
   };
 
   const onEdit = () => {
-    setMenu(false)
+    setMenu(false);
     setChecking(true);
   };
 
@@ -101,7 +66,15 @@ export default function Post({
       />
     );
 
-  if (isEditing) return <></>;
+  if (isEditing)
+    return (
+      <EditCard
+        id={id}
+        initialValues={initialValues}
+        passwordChecked={passwordChecked}
+        setEditing={setEditing}
+      />
+    );
 
   return (
     <PostCard>
