@@ -23,20 +23,20 @@ const validationSchema = Yup.object({
     .trim(),
 
   type: Yup.string()
-    .oneOf(["found", "lost"], "النوع يجب أن يكون إما مفقود أو موجود")
+    .oneOf(["موجود", "مفقود"], "النوع يجب أن يكون إما مفقود أو موجود")
     .required("النوع مطلوب"),
 
   category: Yup.string()
     .oneOf(
       [
-        "phone",
-        "keys",
-        "wallet",
-        "bag",
-        "pet",
-        "documents",
-        "jewelry",
-        "other",
+        "هاتف",
+        "مفاتيح",
+        "محفظة",
+        "حيوان أليف",
+        "حقيبة",
+        "وثائق",
+        "مجوهرات",
+        "أخرى",
       ],
       "الفئة غير صحيحة"
     )
@@ -144,8 +144,8 @@ export default function AddPost() {
                   <label htmlFor="type">النوع</label>
                   <Field as="select" name="type" id="type">
                     <option value="">اختر النوع</option>
-                    <option value="found">موجود</option>
-                    <option value="lost">مفقود</option>
+                    <option value="موجود">موجود</option>
+                    <option value="مفقود">مفقود</option>
                   </Field>
                   <ErrorMessage name="type" component="div" className="error" />
                 </div>
@@ -154,14 +154,14 @@ export default function AddPost() {
                   <label htmlFor="category">الفئة</label>
                   <Field as="select" name="category" id="category">
                     <option value="">اختر الفئة</option>
-                    <option value="phone">هاتف</option>
-                    <option value="keys">مفاتيح</option>
-                    <option value="wallet">محفظة</option>
-                    <option value="bag">حقيبة</option>
-                    <option value="pet">حيوان أليف</option>
-                    <option value="documents">وثائق</option>
-                    <option value="jewelry">مجوهرات</option>
-                    <option value="other">أخرى</option>
+                    <option value="هاتف">هاتف</option>
+                    <option value="مفاتيح">مفاتيح</option>
+                    <option value="محفظة">محفظة</option>
+                    <option value="حقيبة">حقيبة</option>
+                    <option value="حيوان أليف">حيوان أليف</option>
+                    <option value="وثائق">وثائق</option>
+                    <option value="مجوهرات">مجوهرات</option>
+                    <option value="أخرى">أخرى</option>
                   </Field>
                   <ErrorMessage
                     name="category"

@@ -49,21 +49,21 @@ export const createPostSchema = Joi.object({
 
   category: Joi.string()
     .valid(
-      "phone",
-      "keys",
-      "wallet",
-      "bag",
-      "pet",
-      "documents",
-      "jewelry",
-      "other"
+      "هاتف",
+      "مفاتيح",
+      "محفظة",
+      "حيوان أليف",
+      "حقيبة",
+      "وثائق",
+      "مجوهرات",
+      "أخرى"
     )
     .required()
     .messages({
       "any.only": "Please select a valid category",
     }),
 
-  type: Joi.string().valid("found", "lost").required().messages({
+  type: Joi.string().valid("موجود", "مفقود").required().messages({
     "string.empty": "Please specify if item is found or lost",
     "any.only": "Type must be either 'found' or 'lost'",
   }),
@@ -88,16 +88,16 @@ export const updatePostSchema = Joi.object({
   area: Joi.string().trim(),
   color: Joi.string().trim().allow(""),
   category: Joi.string().valid(
-    "phone",
-    "keys",
-    "wallet",
-    "bag",
-    "pet",
-    "documents",
-    "jewelry",
-    "other"
+    "هاتف",
+    "مفاتيح",
+    "محفظة",
+    "حيوان أليف",
+    "حقيبة",
+    "وثائق",
+    "مجوهرات",
+    "أخرى"
   ),
-  type: Joi.string().valid("found", "lost"),
+  type: Joi.string().valid("موجود", "مفقود"),
   status: Joi.string().valid("active", "resolved"),
 }).min(2); // At least one field must be updated
 

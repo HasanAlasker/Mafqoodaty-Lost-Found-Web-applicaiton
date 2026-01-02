@@ -58,8 +58,7 @@ export default function Home() {
       <HomeCard />
       <TabNav activeTab={activeTab} onTabChange={onTabChange} />
       <PostGrid>
-        {foundList}
-        {lostList}
+        {activeTab === "found" ? foundList : lostList}
       </PostGrid>
     </Screen>
   );

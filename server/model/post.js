@@ -30,14 +30,14 @@ const postSchema = new mongoose.Schema(
     category: {
       type: String,
       enum: [
-        "phone",
-        "keys",
-        "wallet",
-        "bag",
-        "pet",
-        "documents",
-        "jewelry",
-        "other",
+        "هاتف",
+        "مفاتيح",
+        "محفظة",
+        "حيوان أليف",
+        "حقيبة",
+        "وثائق",
+        "مجوهرات",
+        "أخرى",
       ],
       required: true,
     },
@@ -70,7 +70,7 @@ const postSchema = new mongoose.Schema(
 
     type: {
       type: String,
-      enum: ["found", "lost"],
+      enum: ["موجود", "مفقود"],
       required: true,
     },
     status: {

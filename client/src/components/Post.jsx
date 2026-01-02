@@ -11,7 +11,7 @@ export default function Post({
   userPhone,
   createdAt,
   name,
-  image,
+  image ,
   category,
   description,
   color,
@@ -36,7 +36,7 @@ export default function Post({
           <Tags title={city} />
           <Tags title={area} />
           {color && <Tags title={color} />}
-          <Tags title={type} />
+          <Tags title={type} green />
         </TagContainer>
         <Description
           open={openDesc}

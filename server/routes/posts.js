@@ -96,7 +96,7 @@ router.get("/search", async (req, res) => {
 // get lost
 router.get("/lost", async (req, res) => {
   try {
-    const posts = await PostModel.find({ type: "lost" }).sort("-createdAt");
+    const posts = await PostModel.find({ type: "مفقود" }).sort("-createdAt");
 
     return res.status(200).json({
       success: true,
@@ -114,7 +114,7 @@ router.get("/lost", async (req, res) => {
 // get found
 router.get("/found", async (req, res) => {
   try {
-    const posts = await PostModel.find({ type: "found" }).sort("-createdAt");
+    const posts = await PostModel.find({ type: "موجود" }).sort("-createdAt");
 
     return res.status(200).json({
       success: true,

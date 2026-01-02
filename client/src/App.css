@@ -189,7 +189,7 @@ nav {
 
 /* -------------------------------------- P O S T ----------------------------------------- */
 
-.postGrid{
+.postGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-content: space-between;
@@ -244,16 +244,22 @@ nav {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 .tag {
   border: var(--black) solid 2px;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   border-radius: 20rem;
-  line-height: 1.5;
+  line-height: 1.8;
   font-weight: bold;
+  font-size: clamp(0.8rem, 3vw, 1rem);
 }
-.imageAndBtn{
+.greenTag{
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+}
+.imageAndBtn {
   display: flex;
   flex-direction: column;
 }
@@ -350,8 +356,8 @@ form {
   transform: translateY(-3px);
   transition: all 0.3s ease;
 }
-.formBtn:disabled{
-  opacity: .5;
+.formBtn:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
   transform: none;
   filter: none;
@@ -389,6 +395,9 @@ form {
   }
   .leftForm {
     width: 50%;
+  }
+  .postGrid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 }
 @media (min-width: 650px) {
@@ -440,5 +449,11 @@ form {
   .logo {
     width: 3rem;
     height: 3rem;
+  }
+}
+
+@media (min-width: 1550px) {
+  .postGrid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 }
