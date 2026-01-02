@@ -20,25 +20,34 @@ export default function Post({
   type,
   password,
 }) {
-  const [openDesc, setOpenDesc] = useState(false);
+  let isOpen = image ? false : true
+  const [openDesc, setOpenDesc] = useState(isOpen);
   const onClickDesc = () => {
-    setOpenDesc(!openDesc)
-  }
+    setOpenDesc(!openDesc);
+  };
 
   return (
     <PostCard>
-      <TopOfPost userName={userName} createdAt={createdAt}/>
-      <TagContainer>
-        <Tags title={name} />
-        <Tags title={category} />
-        <Tags title={city} />
-        <Tags title={area} />
-        {color && <Tags title={color} />}
-        <Tags title={type} />
-      </TagContainer>
-      <Description open={openDesc} onClick={onClickDesc} description={description}/>
-      <img className="itemImage"  alt="" />
-      <PrimaryBtn />
+      <div>
+        <TopOfPost userName={userName} createdAt={createdAt} />
+        <TagContainer>
+          <Tags title={name} />
+          <Tags title={category} />
+          <Tags title={city} />
+          <Tags title={area} />
+          {color && <Tags title={color} />}
+          <Tags title={type} />
+        </TagContainer>
+        <Description
+          open={openDesc}
+          onClick={onClickDesc}
+          description={description}
+        />
+      </div>
+      <div className="imageAndBtn">
+        {image && <img className="itemImage" alt="" />}
+        <PrimaryBtn />
+      </div>
     </PostCard>
   );
 }

@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function PrimaryBtn() {
   return (
-    <button className='priBtn mid bold'>
-      <p>تواصل مع الناشر</p>
+    <button className='priBtn bold'>
+      <p className='small'>تواصل مع الناشر</p>
       <RiPhoneLine />
     </button>
   )

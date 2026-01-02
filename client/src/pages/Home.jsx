@@ -5,6 +5,7 @@ import Screen from "../components/Screen";
 import TabNav from "../components/TabNav";
 import Post from "../components/Post";
 import { usePost } from "../context/postContext";
+import PostGrid from "../components/PostGrid";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("lost");
@@ -56,8 +57,10 @@ export default function Home() {
       <Nav />
       <HomeCard />
       <TabNav activeTab={activeTab} onTabChange={onTabChange} />
-      {foundList}
-      {lostList}
+      <PostGrid>
+        {foundList}
+        {lostList}
+      </PostGrid>
     </Screen>
   );
 }
