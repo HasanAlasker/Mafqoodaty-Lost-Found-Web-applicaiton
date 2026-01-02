@@ -113,7 +113,7 @@ export function PostProvider({ children }) {
 
       const newPost = result.data;
 
-      if (data.type === "lost") {
+      if (data.type === "مفقود") {
         setLost((prev) => [...prev, newPost]);
       } else {
         setFound((prev) => [...prev, newPost]);
