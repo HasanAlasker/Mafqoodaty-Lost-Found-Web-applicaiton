@@ -27,7 +27,7 @@ export default function PasswordCard({
       if (result?.ok) {
         setPassword(values.password);
         setChecking(false);
-        setEditing(true)
+        setEditing(true);
         resetForm();
       } else {
         setErrors({
@@ -66,12 +66,22 @@ export default function PasswordCard({
             {errors.submit && <div className="error">{errors.submit}</div>}
 
             <button
-              className="formBtn small"
+              className="formBtn"
               type="submit"
               disabled={isSubmitting}
-              style={{ marginBottom: "1rem" }}
+              style={{ margin: "0rem" }}
             >
               {isSubmitting ? "جاري التحقق..." : "تحقق"}
+            </button>
+
+            <button
+              className="formBtn"
+              type="cancel"
+              disabled={isSubmitting}
+              style={{ margin: "0rem", background: "red" }}
+              onClick={() => setChecking(false)}
+            >
+              {isSubmitting ? "جاري ..." : "رجوع"}
             </button>
           </Form>
         )}
