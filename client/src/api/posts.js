@@ -10,7 +10,7 @@ export const wakeup = async () => {
     return {
       ok: false,
       error: error.response?.data?.message || error.message,
-      status: error.response?.status
+      status: error.response?.status,
     };
   }
 };
@@ -23,7 +23,7 @@ export const getAllPosts = async () => {
     return {
       ok: false,
       error: error.response?.data?.message || error.message,
-      status: error.response?.status
+      status: error.response?.status,
     };
   }
 };
@@ -36,7 +36,7 @@ export const getAllFound = async () => {
     return {
       ok: false,
       error: error.response?.data?.message || error.message,
-      status: error.response?.status
+      status: error.response?.status,
     };
   }
 };
@@ -49,7 +49,7 @@ export const getAllLost = async () => {
     return {
       ok: false,
       error: error.response?.data?.message || error.message,
-      status: error.response?.status
+      status: error.response?.status,
     };
   }
 };
@@ -62,7 +62,7 @@ export const getPostById = async (id) => {
     return {
       ok: false,
       error: error.response?.data?.message || error.message,
-      status: error.response?.status
+      status: error.response?.status,
     };
   }
 };
@@ -75,7 +75,7 @@ export const verifyPassword = async (id, data) => {
     return {
       ok: false,
       error: error.response?.data?.message || error.message,
-      status: error.status
+      status: error.status,
     };
   }
 };
@@ -88,7 +88,7 @@ export const createPost = async (data) => {
     return {
       ok: false,
       error: error.response?.data?.message || error.message,
-      status: error.response?.status
+      status: error.response?.status,
     };
   }
 };
@@ -101,20 +101,22 @@ export const editPost = async (id, data) => {
     return {
       ok: false,
       error: error.response?.data?.message || error.message,
-      status: error.response?.status
+      status: error.response?.status,
     };
   }
 };
 
-export const deletePost = async (id) => {
+export const deletePost = async (id, password) => {
   try {
-    const res = await api.delete(`${endPoint}/${id}`);
+    const res = await api.delete(`${endPoint}/${id}`, {
+      data: { password },
+    });
     return { ok: true, data: res.data, status: res.status };
   } catch (error) {
     return {
       ok: false,
       error: error.response?.data?.message || error.message,
-      status: error.response?.status
+      status: error.response?.status,
     };
   }
 };

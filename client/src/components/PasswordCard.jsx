@@ -3,6 +3,7 @@ import PostCard from "./PostCard";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { verifyPassword } from "../api/posts";
+import { usePost } from "../context/postContext";
 
 const validationSchema = Yup.object({
   password: Yup.string()
@@ -15,8 +16,12 @@ export default function PasswordCard({
   setPassword,
   setChecking,
   setEditing,
+  isDelete,
   onChecked,
+  type,
 }) {
+  const { removePost } = usePost();
+
   const handleSubmit = async (
     values,
     { setSubmitting, resetForm, setErrors }
@@ -24,7 +29,25 @@ export default function PasswordCard({
     try {
       const result = await verifyPassword(id, values);
 
-      if (result?.ok) {
+      if (result?.ok && isDelete) {
+        let text = "تريد الحذف؟";
+        if (confirm(text) === true) {
+          try {
+            // Fix: pass values.password, not values
+            const deleteResult = await removePost(id, values.password, type);
+            if (deleteResult?.ok) {
+              alert("تم الحذف بنجاح");
+              setChecking(false);
+            } else {
+              alert("حصل خطأ, جرب مرة أخرى");
+            }
+          } catch (err) {
+            alert("حصل خطأ, جرب مرة أخرى");
+          }
+        }
+        resetForm();
+      } else if (result?.ok && !isDelete) {
+        // Fix: combine the if-else logic
         setPassword(values.password);
         setChecking(false);
         setEditing(true);

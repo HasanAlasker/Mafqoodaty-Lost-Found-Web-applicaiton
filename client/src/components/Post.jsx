@@ -30,6 +30,7 @@ export default function Post({
   const [isChecking, setChecking] = useState(false);
   const [isEditing, setEditing] = useState(false);
   const [passwordChecked, setPasswordChecked] = useState(null);
+  let [isDelete, setDelete] = useState(false);
 
   const initialValues = {
     userPhone: userPhone,
@@ -54,7 +55,11 @@ export default function Post({
     setChecking(true);
   };
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    setMenu(false);
+    setChecking(true);
+    setDelete(true);
+  };
 
   if (isChecking)
     return (
@@ -63,6 +68,8 @@ export default function Post({
         setPassword={setPasswordChecked}
         setChecking={setChecking}
         setEditing={setEditing}
+        isDelete={isDelete}
+        type={type}
       />
     );
 
@@ -84,7 +91,11 @@ export default function Post({
           createdAt={createdAt}
           onClickMenu={onClickThreeDots}
         />
-        <PostMenu isVisible={openMenu} onEdit={onEdit} />
+        <PostMenu
+          isVisible={openMenu}
+          onEdit={onEdit}
+          onDelete={handleDelete}
+        />
         <TagContainer>
           <Tags title={name} />
           <Tags title={category} />

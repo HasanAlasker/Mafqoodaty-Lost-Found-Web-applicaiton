@@ -170,38 +170,38 @@ export function PostProvider({ children }) {
     }
   };
 
-  // delete post
-  const removePost = async (id) => {
-    setError(false);
-    setErrMsg(null);
-    setLoading(true);
+// delete post
+const removePost = async (id, password, type) => {
+  setError(false);
+  setErrMsg(null);
+  setLoading(true);
 
-    try {
-      const result = await deletePost(id);
+  try {
+    const result = await deletePost(id, password);
 
-      if (!result.ok) {
-        setError(true);
-        setErrMsg(result.error);
-        setStatus(result.status);
-        return false;
-      }
-
-      if (data.type === "lost") {
-        setLost((prev) => prev.filter((post) => post._id !== id));
-      } else {
-        setFound((prev) => prev.filter((post) => post._id !== id));
-      }
-
-      setStatus(result.status);
-      return true;
-    } catch (err) {
+    if (!result.ok) {
       setError(true);
-      setErrMsg(err.message || err);
-      return false;
-    } finally {
-      setLoading(false);
+      setErrMsg(result.error);
+      setStatus(result.status);
+      return { ok: false, error: result.error };
     }
-  };
+
+    if (type === "مفقود") {
+      setLost((prev) => prev.filter((post) => post._id !== id));
+    } else {
+      setFound((prev) => prev.filter((post) => post._id !== id));
+    }
+
+    setStatus(result.status);
+    return { ok: true };
+  } catch (err) {
+    setError(true);
+    setErrMsg(err.message || err);
+    return { ok: false, error: err.message }; // Fix: return object, not false
+  } finally {
+    setLoading(false);
+  }
+};
 
   // verifyPassword
   const verifyPassword = async (id, data) => {};
