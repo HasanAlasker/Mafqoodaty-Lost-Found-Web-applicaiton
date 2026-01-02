@@ -5,13 +5,51 @@ import Description from "./Description";
 import PrimaryBtn from "./PrimaryBtn";
 import PostCard from "./PostCard";
 import TagContainer from "./TagContainer";
+import PostMenu from "./PostMenu";
+import * as Yup from "yup";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import PasswordCard from "./PasswordCard";
+
+const validationSchema = Yup.object({
+  userPhone: Yup.string()
+    .required("رقم الهاتف مطلوب")
+    .matches(/^[0-9+\-\s()]+$/, "صيغة رقم الهاتف غير صحيحة")
+    .trim(),
+
+  name: Yup.string()
+    .max(100, "اسم الشيء يجب ألا يزيد عن 100 حرف")
+    .required("اسم الشيء مطلوب")
+    .trim(),
+
+  type: Yup.string()
+    .oneOf(["موجود", "مفقود"], "النوع يجب أن يكون إما مفقود أو موجود")
+    .required("النوع مطلوب"),
+
+  color: Yup.string().trim().notRequired(),
+
+  password: Yup.string()
+    .min(4, "كلمة السر غير صحيحة")
+    .required("كلمة المرور مطلوبة"),
+
+  image: Yup.mixed().notRequired(),
+
+  description: Yup.string()
+    .max(500, "الوصف يجب ألا يزيد عن 500 حرف")
+    .required("الوصف مطلوب")
+    .trim(),
+
+  city: Yup.string().required("المدينة مطلوبة").trim(),
+
+  area: Yup.string().required("المنطقة مطلوبة").trim(),
+});
 
 export default function Post({
+  _id,
   userName,
   userPhone,
   createdAt,
   name,
-  image ,
+  image,
   category,
   description,
   color,
@@ -20,16 +58,71 @@ export default function Post({
   type,
   password,
 }) {
-  let isOpen = image ? false : true
+  let isOpen = image ? false : true;
   const [openDesc, setOpenDesc] = useState(isOpen);
+  const [openMenu, setMenu] = useState(false);
+  const [isChecking, setChecking] = useState(false);
+  const [isEditing, setEditing] = useState(false);
+  const [passwordChecked, setPasswordChecked] = useState(null);
+
+  const initialValues = {
+    userPhone: userPhone,
+    name: name,
+    type: type,
+    category: category,
+    color: color || null,
+    description: description,
+    city: city,
+    area: area,
+  };
+
   const onClickDesc = () => {
     setOpenDesc(!openDesc);
   };
 
+  const onClickThreeDots = () => {
+    setMenu(!openMenu);
+  };
+
+  const onEdit = () => {
+    setChecking(true);
+  };
+
+  const handleDelete = () => {};
+
+  const handleSubmit = async (
+    values,
+    { setSubmitting, resetForm, setErrors }
+  ) => {
+    try {
+      const result = await addPost(values);
+
+      if (result) {
+        resetForm();
+        alert("تم النشر بنجاح!");
+      } else {
+        setErrors({ submit: errMsg });
+      }
+    } catch (error) {
+      setErrors({ submit: "An unexpected error occurred" });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  if (isChecking) return <PasswordCard />;
+
+  if (isEditing) return <></>;
+
   return (
     <PostCard>
       <div>
-        <TopOfPost userName={userName} createdAt={createdAt} />
+        <TopOfPost
+          userName={userName}
+          createdAt={createdAt}
+          onClickMenu={onClickThreeDots}
+        />
+        <PostMenu isVisible={openMenu} onEdit={onEdit} />
         <TagContainer>
           <Tags title={name} />
           <Tags title={category} />

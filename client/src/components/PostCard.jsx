@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function PostCard({children}) {
+export default function PostCard({children, style}) {
   return (
-    <div className='postCard'>
+    <div className='postCard' style={style}>
        {children}
     </div>
   )
