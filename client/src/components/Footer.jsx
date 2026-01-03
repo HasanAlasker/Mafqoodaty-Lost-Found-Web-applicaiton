@@ -11,18 +11,18 @@ const Footer = () => {
     e.preventDefault();
 
     if (!email || !email.includes("@")) {
-      alert("Please enter a valid email address");
+      alert("الرجاء إدخال بريد إلكتروني صحيح");
       return;
     }
 
     setIsLoading(true);
 
     try {
-    //   await addSubscriber(email);
+      //   await addSubscriber(email);
       setEmail("");
-      alert("Thank you for subscribing!");
+      alert("شكراً لاشتراكك!");
     } catch (error) {
-      alert(error.message || "Failed to subscribe. Please try again.");
+      alert(error.message || "فشل الاشتراك. يرجى المحاولة مرة أخرى.");
     } finally {
       setIsLoading(false);
     }
@@ -42,8 +42,9 @@ const Footer = () => {
               </a>
 
               <p className="footer-description">
-                Handcrafted with love, each piece weaves together artistry and
-                functionality to bring warmth and character to your space.
+                منصة مفقوداتي تساعدك في العثور على أغراضك المفقودة أو إعادة
+                الأشياء الموجودة لأصحابها. معاً نبني مجتمعاً متعاوناً يسوده
+                الأمانة والتكافل.
               </p>
               <div className="social-links">
                 <a
@@ -73,15 +74,15 @@ const Footer = () => {
 
             {/* Newsletter */}
             <div className="footer-column newsletter-column">
-              <h3 className="footer-title">Stay Connected</h3>
+              <h3 className="footer-title">ابقَ على تواصل</h3>
               <p className="newsletter-text">
-                Subscribe to receive exclusive offers, macrame tutorials, and
-                updates on new handcrafted collections.
+                اشترك لتصلك التحديثات الجديدة حول المفقودات والموجودات في
+                منطقتك، ونصائح مفيدة لحماية ممتلكاتك.
               </p>
               <div className="newsletter-form">
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="أدخل بريدك الإلكتروني"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="newsletter-input"
@@ -91,14 +92,14 @@ const Footer = () => {
                   disabled={isLoading}
                   className="newsletter-button"
                 >
-                  Subscribe
+                  اشترك
                 </button>
               </div>
               <button
                 onClick={() => setShowPrivacy(!showPrivacy)}
                 className="privacy-link"
               >
-                Privacy Policy
+                سياسة الخصوصية وشروط الاستخدام
               </button>
             </div>
           </div>
@@ -109,16 +110,17 @@ const Footer = () => {
               <img src={Logo3} alt="" className="Textlogo-placeholder" />
             </a>
             <p className="copyright">
-              © {new Date().getFullYear()} All rights reserved.
+              © {new Date().getFullYear()} جميع الحقوق محفوظة
             </p>
             <p className="dev-credit">
-              Website developed by{" "}
+              تم تطوير الموقع بواسطة
               <a
                 href="https://alasker.dev"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="small"
               >
-                Alasker Technologies
+                {"  "}Alasker Technologies
               </a>
             </p>
           </div>
@@ -132,48 +134,99 @@ const Footer = () => {
             <button
               className="modal-close"
               onClick={() => setShowPrivacy(false)}
-              aria-label="Close"
+              aria-label="إغلاق"
             >
               ×
             </button>
-            <h2>Privacy Policy</h2>
+            <h2>سياسة الخصوصية وشروط الاستخدام</h2>
             <div className="modal-body">
-              <h3>Newsletter Registration</h3>
-              <p>
-                When you subscribe to our newsletter, we collect your email
-                address to send you updates about our products, services, and
-                special offers.
+              <h3>1. سياسة الخصوصية</h3>
+              <h4>جمع المعلومات</h4>
+              <p className="small">
+                عند استخدامك لمنصة مفقوداتي، نقوم بجمع المعلومات التالية:
               </p>
-
-              <h3>How We Use Your Information</h3>
-              <p>Your email address will be used exclusively to:</p>
               <ul>
-                <li>Send you our newsletter and promotional materials</li>
-                <li>
-                  Notify you about special offers and seasonal arrangements
-                </li>
-                <li>Share floral care tips and arrangement ideas</li>
+                <li>الاسم ورقم الهاتف عند نشر إعلان</li>
+                <li>تفاصيل الأغراض المفقودة أو الموجودة</li>
+                <li>الموقع الجغرافي للغرض المدينة والمنطقة</li>
+                <li>الصور المرفقة بالإعلان اختياري</li>
+                <li>البريد الإلكتروني عند الاشتراك في النشرة البريدية</li>
               </ul>
 
-              <h3>Data Protection</h3>
-              <p>
-                We are committed to protecting your personal information. Your
-                email address will never be sold, shared, or distributed to
-                third parties without your explicit consent.
-              </p>
-
-              <h3>Your Rights</h3>
-              <p>You have the right to:</p>
+              <h4>استخدام المعلومات</h4>
+              <p className="small">نستخدم معلوماتك لـ:</p>
               <ul>
-                <li>Unsubscribe from our newsletter at any time</li>
-                <li>Request deletion of your personal data</li>
-                <li>Access the information we hold about you</li>
+                <li>عرض إعلانات المفقودات والموجودات على المنصة</li>
+                <li>تمكين التواصل بين الأشخاص لإعادة الأغراض لأصحابها</li>
+                <li>إرسال التحديثات والإشعارات المهمة</li>
+                <li>تحسين خدمات المنصة</li>
               </ul>
 
-              <h3>Contact Us</h3>
-              <p>
-                If you have any questions about our privacy practices, please
-                contact us through our website or social media channels.
+              <h4>حماية البيانات</h4>
+              <p className="small">
+                نلتزم بحماية معلوماتك الشخصية. لن يتم بيع أو مشاركة أو توزيع
+                بياناتك لأطراف ثالثة دون موافقتك الصريحة. يتم تخزين كلمات المرور
+                بشكل مشفر ولا يمكن لأي شخص الاطلاع عليها.
+              </p>
+
+              <h4>حقوقك</h4>
+              <p className="small">لديك الحق في:</p>
+              <ul>
+                <li>تعديل أو حذف إعلاناتك في أي وقت</li>
+                <li>إلغاء الاشتراك من النشرة البريدية</li>
+                <li>طلب حذف بياناتك الشخصية</li>
+                <li>الوصول إلى المعلومات التي نحتفظ بها عنك</li>
+              </ul>
+
+              <h3>2. شروط الاستخدام</h3>
+
+              <h4>قواعد النشر</h4>
+              <p className="small">يجب على المستخدمين الالتزام بما يلي:</p>
+              <ul>
+                <li>نشر معلومات صحيحة ودقيقة فقط</li>
+                <li>عدم نشر محتوى مسيء أو مخالف للقانون</li>
+                <li>احترام خصوصية الآخرين</li>
+                <li>عدم استخدام المنصة لأغراض تجارية أو احتيالية</li>
+                <li>نشر صور واضحة وملائمة للأغراض المفقودة أو الموجودة</li>
+              </ul>
+
+              <h4>المسؤولية</h4>
+              <p className="small">
+                منصة مفقوداتي هي وسيط للتواصل بين الأشخاص فقط. لا نتحمل
+                المسؤولية عن:
+              </p>
+              <ul>
+                <li>دقة المعلومات المنشورة من قبل المستخدمين</li>
+                <li>التعاملات التي تتم خارج المنصة</li>
+                <li>فقدان أو تلف الممتلكات</li>
+                <li>النزاعات بين المستخدمين</li>
+              </ul>
+
+              <h4>حذف المحتوى</h4>
+              <p className="small">
+                نحتفظ بالحق في حذف أي محتوى يخالف هذه الشروط أو يعتبر غير ملائم،
+                دون الحاجة لإشعار مسبق.
+              </p>
+
+              <h4>التعديلات</h4>
+              <p className="small">
+                نحتفظ بالحق في تعديل هذه السياسة والشروط في أي وقت. سيتم إشعار
+                المستخدمين بأي تغييرات جوهرية عبر المنصة.
+              </p>
+
+              <h3>3. الأمان والنصائح</h3>
+              <p className="small">للحفاظ على سلامتك، ننصحك بـ:</p>
+              <ul>
+                <li>التحقق من هوية الشخص قبل الالتقاء به</li>
+                <li>اختيار أماكن عامة وآمنة للقاء</li>
+                <li>عدم مشاركة معلومات شخصية حساسة</li>
+                <li>الإبلاغ عن أي سلوك مشبوه</li>
+              </ul>
+
+              <h3>تواصل معنا</h3>
+              <p className="small">
+                إذا كان لديك أي استفسارات حول سياسة الخصوصية أو شروط الاستخدام،
+                يمكنك التواصل معنا عبر وسائل التواصل الاجتماعي.
               </p>
 
               <p className="last-updated">
