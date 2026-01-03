@@ -74,38 +74,46 @@ export default function PasswordCard({
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, errors }) => (
-          <Form>
-            <div className="formInput">
-              <label htmlFor="password">ادخل كلمة السر</label>
-              <Field
-                type="password"
-                name="password"
-                id="password"
-                placeholder="كلمة السر"
-              />
-              <ErrorMessage name="password" component="div" className="error" />
+          <Form className="bigFormCont">
+            <div className="topPassCard">
+              <div className="formInput">
+                <label htmlFor="password">ادخل كلمة السر</label>
+                <Field
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="كلمة السر"
+                />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="error"
+                />
+              </div>
+
+              {errors.submit && <div className="error">{errors.submit}</div>}
             </div>
 
-            {errors.submit && <div className="error">{errors.submit}</div>}
+            <div className="bottomPassCard">
+              <button
+                className="formBtn"
+                type="submit"
+                disabled={isSubmitting}
+                style={{ margin: "0rem" }}
+              >
+                {isSubmitting ? "جاري التحقق..." : "تحقق"}
+              </button>
 
-            <button
-              className="formBtn"
-              type="submit"
-              disabled={isSubmitting}
-              style={{ margin: "0rem" }}
-            >
-              {isSubmitting ? "جاري التحقق..." : "تحقق"}
-            </button>
-
-            <button
-              className="formBtn"
-              type="cancel"
-              disabled={isSubmitting}
-              style={{ margin: "0rem", background: "red" }}
-              onClick={() => setChecking(false)}
-            >
-              {isSubmitting ? "جاري ..." : "رجوع"}
-            </button>
+              <button
+                className="formBtn"
+                type="cancel"
+                disabled={isSubmitting}
+                style={{ margin: "0rem", background: "red" }}
+                onClick={() => setChecking(false)}
+              >
+                {isSubmitting ? "جاري ..." : "رجوع"}
+              </button>
+            </div>
           </Form>
         )}
       </Formik>

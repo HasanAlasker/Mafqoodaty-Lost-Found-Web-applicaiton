@@ -98,7 +98,7 @@ export default function Post({
         />
         <TagContainer>
           <Tags title={type} green />
-          <Tags title={category} />
+          {category!== "أخرى" && <Tags title={category} />}
           <Tags title={name} />
           {color && <Tags title={color} />}
           <Tags title={city} />
