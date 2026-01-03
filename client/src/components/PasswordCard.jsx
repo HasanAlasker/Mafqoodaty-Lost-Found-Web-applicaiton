@@ -17,6 +17,7 @@ export default function PasswordCard({
   setChecking,
   setEditing,
   isDelete,
+  setDelete,
   onChecked,
   type,
 }) {
@@ -109,7 +110,10 @@ export default function PasswordCard({
                 type="cancel"
                 disabled={isSubmitting}
                 style={{ margin: "0rem", background: "red" }}
-                onClick={() => setChecking(false)}
+                onClick={() => {
+                  setChecking(false);
+                  setDelete(false);
+                }}
               >
                 {isSubmitting ? "جاري ..." : "رجوع"}
               </button>

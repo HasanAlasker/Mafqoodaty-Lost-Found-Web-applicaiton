@@ -69,6 +69,7 @@ export default function Post({
         setChecking={setChecking}
         setEditing={setEditing}
         isDelete={isDelete}
+        setDelete={setDelete}
         type={type}
       />
     );
