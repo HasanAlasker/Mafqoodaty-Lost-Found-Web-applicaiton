@@ -113,7 +113,9 @@ export default function Post({
         )}
       </div>
       <div className="imageAndBtn">
-        {image && <img className="itemImage" alt="" />}
+        {image && (
+          <img className="itemImage" alt="" src={image} loading="lazy" />
+        )}
         <PrimaryBtn userPhone={userPhone} />
       </div>
     </PostCard>
