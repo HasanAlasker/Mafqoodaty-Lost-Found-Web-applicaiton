@@ -54,6 +54,19 @@ export const getAllLost = async () => {
   }
 };
 
+export const searchPosts = async (params = {}) => {
+  try {
+    const res = await api.get(`${endPoint}/search`, { params });
+    return { ok: true, data: res.data, status: res.status };
+  } catch (error) {
+    return {
+      ok: false,
+      error: error.response?.data?.message || error.message,
+      status: error.response?.status,
+    };
+  }
+};
+
 export const getPostById = async (id) => {
   try {
     const res = await api.get(`${endPoint}/${id}`);

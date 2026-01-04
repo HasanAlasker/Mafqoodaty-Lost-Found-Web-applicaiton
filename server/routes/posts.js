@@ -65,21 +65,22 @@ router.get("/search", async (req, res) => {
       });
     }
 
-    // Build search filter
     const filter = {
       status,
       $or: [
         { name: { $regex: q, $options: "i" } },
         { description: { $regex: q, $options: "i" } },
         { color: { $regex: q, $options: "i" } },
+        { category: { $regex: q, $options: "i" } },
+        { city: { $regex: q, $options: "i" } },
+        { area: { $regex: q, $options: "i" } },
       ],
     };
 
-    // Add optional filters
     if (type) filter.type = type;
-    if (city) filter.city = city;
-    if (area) filter.area = area;
-    if (category) filter.category = category;
+    if (city && !q) filter.city = city; // Only apply if not searching
+    if (area && !q) filter.area = area; // Only apply if not searching
+    if (category && !q) filter.category = category; // Only apply if not searching
 
     const posts = await PostModel.find(filter).sort("-createdAt").limit(50);
 

@@ -112,22 +112,6 @@ nav {
   font-size: 1.8rem;
   cursor: pointer;
 }
-.fake {
-  color: var(--background);
-  background-color: var(--background);
-
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  z-index: -1000;
-  justify-content: center;
-  padding-bottom: 1rem;
-  margin-bottom: 2rem;
-  background-color: rgba(16, 16, 16, 0.7);
-  backdrop-filter: blur(15px) saturate(180%);
-  -webkit-backdrop-filter: blur(15px) saturate(180%);
-}
-
 .tab {
   display: flex;
   border-radius: 0.5rem;
@@ -185,6 +169,53 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.searchCont {
+  display: flex;
+  width: 100%;
+}
+.inputAndCancel {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  position: relative;
+}
+.searchbox {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  flex: 1;
+  padding: .5rem;
+}
+.searchbox:focus {
+  outline: none;
+  border-color: var(--green);
+}
+.searchBtn {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  border-radius: 10px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: .4rem 1rem;
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.searchBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--green);
+}
+.clear-button {
+  background: transparent;
+  border: none;
+  color: var(--green);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: bold;
+  position: absolute;
+  left: 20px;
 }
 
 /* -------------------------------------- P O S T ----------------------------------------- */
@@ -332,13 +363,13 @@ nav {
 
 /* -------------------------------------- F O R M ----------------------------------------- */
 
-.bigFormCont{
+.bigFormCont {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
-.bottomPassCard{
+.bottomPassCard {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -352,7 +383,7 @@ form {
   display: flex;
   flex-direction: column;
 }
-.formInput input {
+input {
   padding: 5px 10px;
   border: 2px solid #e0e0e0;
   border-radius: 8px;
@@ -464,7 +495,7 @@ form {
   border-top: 1px solid rgba(32, 32, 32, 0.1);
   padding: 3rem 1rem;
   margin-top: auto;
-  border-radius: .8rem;
+  border-radius: 0.8rem;
   margin-bottom: 3rem;
 }
 .footer-container {
@@ -599,7 +630,6 @@ form {
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
-  font-family: "Inter", sans-serif;
 }
 .newsletter-button:hover {
   transform: translateY(-2px);
@@ -891,6 +921,9 @@ form {
   }
 }
 @media (min-width: 850px) {
+  .searchBtn {
+  padding: .4rem 4rem;
+}
 }
 @media (min-width: 990px) {
   .fake {
