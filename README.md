@@ -1,4 +1,4 @@
-# 🧭 Mafqoodaty – Lost & Found Web App
+# 🧭 Mafqoodaty – Web App
 
 **Mafqoodaty** is a Lost & Found web application built with the **MERN stack**, designed to help people report, discover, and recover lost items efficiently through a simple and intuitive interface.
 
