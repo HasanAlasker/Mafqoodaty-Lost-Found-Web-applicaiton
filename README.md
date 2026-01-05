@@ -42,15 +42,9 @@ The platform allows users to post lost or found items, browse reports, and conne
 
 ---
 
-## 📂 Project Structure
-
-```
-Coming soon
-```
-
----
-
 ## 🚀 Getting Started
+
+> 🔗 Live URL: https://mafqoodaty.netlify.app/
 
 ### Prerequisites
 
@@ -101,18 +95,99 @@ Losing personal belongings is stressful and frustrating.
 
 ---
 
-## 📸 Screenshots (Coming Soon)
-
-> ...
-
----
-
 ## 🔮 Future Improvements
 
 * 📍 Location-based search & filtering
 * 💬 In-app messaging between users
 * 🧠 AI-assisted item matching
 * 📲 Mobile app version
+
+---
+
+## 📂 Project Structure
+```
+├── 📁 client
+│   ├── 📁 public
+│   │   ├── 📄 _redirects
+│   │   ├── 🖼️ fav.png
+│   │   ├── 🖼️ icon.png
+│   │   ├── 🖼️ preview.png
+│   │   ├── ⚙️ sitemap.xml
+│   │   └── 🖼️ square.png
+│   ├── 📁 src
+│   │   ├── 📁 api
+│   │   │   ├── 📄 axios.js
+│   │   │   ├── 📄 posts.js
+│   │   │   └── 📄 upload.js
+│   │   ├── 📁 assets
+│   │   │   ├── 🖼️ gLogo.png
+│   │   │   ├── 🖼️ logoText.png
+│   │   │   └── 🖼️ wLogo.png
+│   │   ├── 📁 components
+│   │   │   ├── 📄 Description.jsx
+│   │   │   ├── 📄 EditCard.jsx
+│   │   │   ├── 📄 Footer.jsx
+│   │   │   ├── 📄 HomeCard.jsx
+│   │   │   ├── 📄 ImagePrev.jsx
+│   │   │   ├── 📄 LoadingPost.jsx
+│   │   │   ├── 📄 LoadingPostGrid.jsx
+│   │   │   ├── 📄 Menu.jsx
+│   │   │   ├── 📄 Nav.jsx
+│   │   │   ├── 📄 PasswordCard.jsx
+│   │   │   ├── 📄 Post.jsx
+│   │   │   ├── 📄 PostCard.jsx
+│   │   │   ├── 📄 PostGrid.jsx
+│   │   │   ├── 📄 PostMenu.jsx
+│   │   │   ├── 📄 PrimaryBtn.jsx
+│   │   │   ├── 📄 Screen.jsx
+│   │   │   ├── 📄 SearchBar.jsx
+│   │   │   ├── 📄 TabNav.jsx
+│   │   │   ├── 📄 TagContainer.jsx
+│   │   │   ├── 📄 Tags.jsx
+│   │   │   └── 📄 TopOfPost.jsx
+│   │   ├── 📁 constants
+│   │   │   └── 📄 baseURL.js
+│   │   ├── 📁 context
+│   │   │   └── 📄 postContext.jsx
+│   │   ├── 📁 functions
+│   │   │   └── 📄 formatDate.jsx
+│   │   ├── 📁 hooks
+│   │   │   └── 📄 useApi.js
+│   │   ├── 📁 pages
+│   │   │   ├── 📄 AddPost.jsx
+│   │   │   ├── 📄 Home.jsx
+│   │   │   └── 📄 Landing.jsx
+│   │   ├── 🎨 App.css
+│   │   ├── 📄 App.jsx
+│   │   └── 📄 main.jsx
+│   ├── ⚙️ .gitignore
+│   ├── 📄 eslint.config.js
+│   ├── 🌐 index.html
+│   ├── ⚙️ package-lock.json
+│   ├── ⚙️ package.json
+│   └── 📄 vite.config.js
+├── 📁 server
+│   ├── 📁 config
+│   │   └── 📄 cloudinary.js
+│   ├── 📁 middleware
+│   │   ├── 📄 admin.js
+│   │   ├── 📄 auth.js
+│   │   ├── 📄 joiValidation.js
+│   │   └── 📄 limiter.js
+│   ├── 📁 model
+│   │   └── 📄 post.js
+│   ├── 📁 routes
+│   │   └── 📄 posts.js
+│   ├── 📁 utils
+│   │   └── 📄 cloudinary.js
+│   ├── 📁 validation
+│   │   └── 📄 post.js
+│   ├── ⚙️ .gitignore
+│   ├── 📄 index.js
+│   ├── ⚙️ package-lock.json
+│   └── ⚙️ package.json
+└── 📝 README.md
+```
 
 ---
 
