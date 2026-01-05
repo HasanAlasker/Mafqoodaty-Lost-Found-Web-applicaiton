@@ -244,6 +244,7 @@ nav {
   overflow: hidden;
   justify-content: space-between;
   position: relative;
+  max-width: 500px;
 }
 .padding {
   padding: 0 1rem;
